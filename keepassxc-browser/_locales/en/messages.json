@@ -1074,5 +1074,9 @@
     "lockDatabase": {
         "message": "Lock database",
         "description": "Lock database button title text."
+    },
+    "performGlobalAutoType": {
+        "message": "Perform Global Auto-Type",
+        "description": "Global Auto-Type keyboard shortcut text."
     }
 }
