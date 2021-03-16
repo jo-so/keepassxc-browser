@@ -1987,6 +1987,8 @@ browser.runtime.onMessage.addListener(async function(req, sender) {
             await kpxc.retrieveCredentials(true);
         } else if (req.action === 'show_password_generator') {
             kpxcPasswordDialog.trigger();
+        } else if (req.action === 'perform_autotype') {
+            sendMessage('perform_autofill', [ kpxc.url ]);
         }
     }
 });

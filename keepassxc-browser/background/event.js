@@ -228,6 +228,7 @@ kpxcEvent.messageHandlers = {
     'page_set_submitted': page.setSubmitted,
     'password_get_filled': kpxcEvent.passwordGetFilled,
     'password_set_filled': kpxcEvent.passwordSetFilled,
+    'perform_autofill': keepass.performAutotype,
     'popup_login': kpxcEvent.onLoginPopup,
     'reconnect': kpxcEvent.onReconnect,
     'remove_credentials_from_tab_information': kpxcEvent.onRemoveCredentialsFromTabInformation,
