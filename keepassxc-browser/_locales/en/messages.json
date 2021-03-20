@@ -31,8 +31,8 @@
         "message": "Fill attribute…",
         "description": "Context menu parent item for filling a custom attribute."
     },
-    "contextMenuPerformGlobalAutoType": {
-      "message": "Perform Global Auto-Type",
+    "contextMenuRequestGlobalAutoType": {
+      "message": "Request Global Auto-Type",
       "description": "Global Auto-Type shortcut text."
     },
     "multipleCredentialsDetected": {

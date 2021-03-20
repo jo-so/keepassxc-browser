@@ -38,7 +38,7 @@ const kpActions = {
     GET_DATABASE_GROUPS: 'get-database-groups',
     CREATE_NEW_GROUP: 'create-new-group',
     GET_TOTP: 'get-totp',
-    PERFORM_AUTOTYPE: 'perform-autotype'
+    REQUEST_AUTOTYPE: 'request-autotype'
 };
 
 const kpErrors = {
@@ -853,18 +853,19 @@ keepass.getTotp = async function(tab, args = []) {
     }
 };
 
-keepass.performAutotype = async function(tab, args = []) {
+keepass.requestAutotype = async function(tab, args = []) {
     if (!keepass.isConnected) {
         keepass.handleError(tab, kpErrors.TIMEOUT_OR_NOT_CONNECTED);
         return false;
     }
 
-    const kpAction = kpActions.PERFORM_AUTOTYPE;
+    const kpAction = kpActions.REQUEST_AUTOTYPE;
     const [ nonce, incrementedNonce ] = keepass.getNonces();
+    const search = getTopLevelDomainFromUrl(args[0]);
 
     const messageData = {
         action: kpAction,
-        url: args[0]
+        search: search
     };
 
     const request = keepass.buildRequest(kpAction, keepass.encrypt(messageData, nonce), nonce, keepass.clientID);
@@ -890,7 +891,7 @@ keepass.performAutotype = async function(tab, args = []) {
 
         return false;
     } catch (err) {
-        console.log('performAutotype failed: ', err);
+        console.log('requestAutotype failed: ', err);
         return false;
     }
 };

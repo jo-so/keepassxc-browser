@@ -120,8 +120,8 @@
         "retrive_credentials_forced": {
             "description": "__MSG_popupReopenButton__"
         },
-        "perform_autotype": {
-            "description": "__MSG_contextMenuPerformGlobalAutoType__"
+        "request_autotype": {
+            "description": "__MSG_contextMenuRequestGlobalAutoType__"
         }
     },
     "web_accessible_resources": [

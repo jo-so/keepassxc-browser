@@ -110,7 +110,7 @@ const contextMenuItems = [
     { title: tr('contextMenuFillAttribute'), id: 'fill_attribute', visible: false },
     { title: tr('contextMenuShowPasswordGenerator'), action: 'show_password_generator' },
     { title: tr('contextMenuSaveCredentials'), action: 'save_credentials' },
-    { title: tr('contextMenuPerformGlobalAutoType'), action: 'perform_autotype' }
+    { title: tr('contextMenuRequestGlobalAutoType'), action: 'request_autotype' }
 ];
 
 const menuContexts = [ 'editable' ];
@@ -141,15 +141,9 @@ browser.commands.onCommand.addListener(async (command) => {
     if (contextMenuItems.some(e => e.action === command)
         || command === 'redetect_fields'
         || command === 'choose_credential_fields'
-        || command === 'retrive_credentials_forced'
-        || command === 'perform_autotype') {
+        || command === 'retrive_credentials_forced') {
         const tabs = await browser.tabs.query({ active: true, currentWindow: true });
         if (tabs.length) {
-            if (command === 'perform_autotype') {
-                await keepass.performAutotype(tabs[0].id, [ tabs[0].url ]);
-                return;
-            }
-
             browser.tabs.sendMessage(tabs[0].id, { action: command });
         }
     }
